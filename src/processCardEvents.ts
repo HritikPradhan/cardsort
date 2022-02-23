@@ -45,7 +45,7 @@ for (let [key,value] of Object.entries(obj)){
   let k:number
   for(let k=0;k<value.length;k++){
     if(value[k].type=="RESERVATION"){
-      reserve++
+      ++reserve
     }else{
       --cancel
     }
@@ -53,7 +53,6 @@ for (let [key,value] of Object.entries(obj)){
   if(reserve+cancel !== 0){
    delete obj[key]
   }
-}
-  
+} 
   return obj as CardTransactionMapping
 }
