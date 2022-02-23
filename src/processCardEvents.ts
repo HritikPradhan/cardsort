@@ -37,9 +37,23 @@ for(let i=0;i<cardEvents.length;i++){
     if(present==false){
       (obj[cardEvents[i].cardId]).push(cardEvents[i])
     }
-    
   }
 }
-  console.log(obj)
-  return {} as CardTransactionMapping
+for (let [key,value] of Object.entries(obj)){
+  let reserve=0
+  let cancel=0
+  let k:number
+  for(let k=0;k<value.length;k++){
+    if(value[k].type=="RESERVATION"){
+      reserve++
+    }else{
+      --cancel
+    }
+  }
+  if(reserve+cancel !== 0){
+   delete obj[key]
+  }
+}
+  
+  return obj as CardTransactionMapping
 }

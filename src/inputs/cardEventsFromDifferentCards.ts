@@ -25,5 +25,5 @@ export const cardEventsFromDifferentCards: CardEvent[] = [
     cardId: 'BOB',
     id: '98d4608c-862a-4b46-9839-2faa30a65d30',
     type: 'CANCELLATION',
-  },
+  }
 ]
