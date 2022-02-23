@@ -21,7 +21,25 @@ type CardTransactionMapping = {
  */
 export const processCardEvents = (cardEvents: CardEvent[]): CardTransactionMapping => {
 
-  // logic
-
+let i:number
+let obj:{[key: string]:any}={}
+for(let i=0;i<cardEvents.length;i++){
+  if(!obj[cardEvents[i].cardId]){
+    obj[cardEvents[i].cardId]=[cardEvents[i]]
+  }else{
+    let j:number
+    let present=false
+    for(j=0;j<obj[cardEvents[i].cardId].length;j++){
+      if(obj[cardEvents[i].cardId][j].id==cardEvents[i].id){
+        present=true
+      }
+    }
+    if(present==false){
+      (obj[cardEvents[i].cardId]).push(cardEvents[i])
+    }
+    
+  }
+}
+  console.log(obj)
   return {} as CardTransactionMapping
 }
